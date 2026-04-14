@@ -4,6 +4,7 @@ const initialState = {
   uid: null,
   email: null,
   role: null,
+  isAuthReady: false
 }
 
 const authSlice = createSlice({
@@ -20,8 +21,11 @@ const authSlice = createSlice({
       state.email = null
       state.role = null
     },
+    setAuthReady : (state,action) =>{
+      state.isAuthReady = action.payload
+    },
   },
 })
 
-export const { setUser, logout } = authSlice.actions
+export const { setUser, logout , setAuthReady } = authSlice.actions
 export default authSlice.reducer
