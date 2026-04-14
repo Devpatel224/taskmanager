@@ -11,6 +11,8 @@ import toast from "react-hot-toast"
 import { doc, getDoc } from "firebase/firestore"
 import { useDispatch } from "react-redux"
 import { setUser } from "@/redux/authSlice"
+import Link from "next/link"
+
 
 
 export function LoginForm() {
@@ -53,6 +55,7 @@ export function LoginForm() {
   }
 
   return (
+    <>
     <Card className="w-[350px] bg-zinc-900 border border-zinc-800 shadow-2xl">
       <CardContent className="p-6 space-y-4">
         <h1 className="text-2xl font-bold text-center text-white">Login</h1>
@@ -75,7 +78,10 @@ export function LoginForm() {
         <Button onClick={handleLogin} className="w-full bg-purple-600 text-xl cursor-pointer">
         {loading ? "Loading..." : "Login"}
         </Button>
+       <h3 className="text-stone-400 text-md">Don't have Account : <Link href="/register" className="text-blue-400">register</Link> </h3>
       </CardContent>
     </Card>
+        
+         </>
   )
 }

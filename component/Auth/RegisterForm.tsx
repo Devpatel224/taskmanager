@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { auth, db } from "@/lib/firebase"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import Link from "next/link"
 
 
 
@@ -75,6 +76,8 @@ export function RegisterForm() {
         <Button onClick={handleRegister} disabled={loading} className="w-full bg-purple-500 text-xl cursor-pointer">
           {loading ? "Loading..." : "Register"}
         </Button>
+
+        <h3 className="text-stone-400 text-md">Already have Account : <Link href="/login" className="text-blue-400">Login</Link> </h3>
       </CardContent>
     </Card>
   )
