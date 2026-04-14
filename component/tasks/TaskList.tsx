@@ -18,6 +18,7 @@ import { updateTaskStatus } from "@/redux/taskSlice";
 import { Button } from "@/components/ui/button";
 import { CreateTask } from "./CreateTask";
 import FilterTask from "./FilterTask";
+import { subscribeToTasks } from "@/utils/subscribeToTasks";
 
 export function TaskList() {
   const dispatch = useDispatch<any>();
@@ -36,8 +37,13 @@ const tasksPerPage = 9;
   const [usersMap, setUsersMap] = useState<any>({});
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    // dispatch(fetchTasks());
+    const unsubscribe = subscribeToTasks(dispatch);
+
+    return ()=> unsubscribe()
   }, [dispatch]);
+
+
 
   useEffect(() => {
     const fetchUsers = async () => {
